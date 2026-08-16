@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Theme colors — overridden at runtime by inline vars on <html> set from
+   admin Settings → Appearance (app/layout.tsx). These are only fallbacks. */
+:root {
+  --background: #fbf9f5;
+  --foreground: #171717;
+  --primary: #df0000;
+  --btn-color: #f97316;
+  --nav-bg: #0b2221;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}

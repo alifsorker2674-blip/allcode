@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.npbazar.com)",
+      "WebFetch(domain:npbazar.com)",
+      "Bash(git check-ignore *)",
+      "Bash(echo \"exit:$?\")",
+      "Bash(pnpm -v)",
+      "Bash(npm -v)",
+      "Bash(pnpm install *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(pnpm exec *)",
+      "Bash(curl -sL \"https://npbazar.com/\")",
+      "Bash(sed -n '1,/<\\\\/head>/p')",
+      "Read(//tmp/**)",
+      "Bash(curl -sI \"https://api.npbazar.com/uploads/1784868549233-af4d5019.png\")",
+      "Bash(pnpm add *)",
+      "Bash(node -c index.js)",
+      "Bash(node -c controllers/orderController.js)",
+      "Bash(node -c utils/discount.js)",
+      "Bash(node -c controllers/couponController.js)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://api.npbazar.com/)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://api.npbazar.com/api/admin/check-superadmin)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" https://admin.npbazar.com/)",
+      "Bash(curl -s https://admin.npbazar.com/)",
+      "Bash(grep -n \"Items \\(\\\\${\" app/track/page.tsx \"app/account/orders/[id]/page.tsx\" \"app/order-confirmation/[orderNumber]/page.tsx\")",
+      "Bash(grep -n 'stockByProduct.get\\(String\\(i.product\\)\\)\\\\|appliedCoupon._id }, { $inc: { usedCount' controllers/orderController.js)",
+      "Bash(node -c utils/realtime.js)",
+      "Bash(node -c controllers/inventoryController.js)",
+      "Bash(node -c controllers/cartController.js)",
+      "Bash(curl -s \"https://api.npbazar.com/api/products?limit=20\")",
+      "Bash(node -e ' *)"
+    ]
+  }
+}

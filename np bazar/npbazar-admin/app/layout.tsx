@@ -1,0 +1,57 @@
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import ChunkErrorHandler from "@/components/ChunkErrorHandler";
+import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+// Static metadata can't read the DB-backed favicon/store name — generateMetadata can.
+export async function generateMetadata(): Promise<Metadata> {
+  let favicon: string | undefined;
+  let storeName = "Ecomus";
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/settings`, { cache: "no-store" });
+    if (res.ok) {
+      const data = await res.json();
+      favicon = data.settings?.favicon || undefined;
+      storeName = data.settings?.storeName || storeName;
+    }
+  } catch {
+    // Fall back to the static app/favicon.ico convention and default store name.
+  }
+
+  return {
+    title: { default: `${storeName} Admin`, template: `%s | ${storeName} Admin` },
+    description: `Admin panel for ${storeName}`,
+    // app/favicon.ico was removed — Next's static file convention always
+    // wins over this field when both exist, so the DB-backed favicon never
+    // took effect. Default lives in public/favicon.ico instead.
+    icons: { icon: favicon || "/favicon.ico" },
+  };
+}
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">
+        <ChunkErrorHandler />
+        {children}
+      </body>
+    </html>
+  );
+}

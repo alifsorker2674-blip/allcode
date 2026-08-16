@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la \"C:/Users/alifs/.claude/projects/\" | grep -i foxses)"
+    ]
+  }
+}
